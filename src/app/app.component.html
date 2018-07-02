@@ -1,20 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div>
+  <input [(ngModel)]="searchedText" type="text" id="searchInput" placeholder="Type here the name of searched person"/>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
 
+  <!-- <div class="card" *ngFor='let user of users | slice:0:numberShown' [ngClass]="{'yellow': user.name.first.toLowerCase().includes(searchedText.toLowerCase()) || user.name.last.toLowerCase().includes(searchedText.toLowerCase()), 'white': searchedText === ''}"> -->
+  <div class="card" *ngFor='let user of users' [ngClass]="{'yellow': user.name.first.toLowerCase().concat(user.name.last.toLowerCase()).includes(searchedText.toLowerCase().trim().replace(' ','')) || user.name.last.toLowerCase().concat(user.name.first.toLowerCase()).includes(searchedText.toLowerCase().trim().replace(' ','')), 'white': searchedText === ''}">
+
+    <img class="userImg" [src]="user.picture.medium" alt="Card image cap">
+    <div>
+      <p class="userName">{{ user.name.first }} {{ user.name.last }}</p>
+      <p class="card-text">{{ user.email }}</p>
+      <i class="material-icons" *ngIf="user.gender === 'male'">android</i>
+      <i class="material-icons" *ngIf="user.gender === 'female'">pregnant_woman</i>
+
+    </div>
+  </div>
+  <button type="button" name="button" id="button" (click)="addNineUsers()">Show more</button>
+</div>

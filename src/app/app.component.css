@@ -1,0 +1,53 @@
+#button {
+  margin: 0 auto;
+  background-color: red;
+  color: white;
+  height: 40px;
+  width: 100%;
+}
+
+
+#searchInput {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  height: 30px;
+  border: solid;
+  font-size: 20px;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.white {
+  background-color: white;
+}
+
+.card {
+  display: inline-block;
+  margin:5px;
+  width: 250px;
+  padding: 25px;
+  border: solid 1px black;
+  flex-grow: 1; /* default 0 */
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.userName {
+  font-size: 16px !important;
+  font-weight: 400;
+}
+
+.userImg {
+  width: 33%;
+  border-radius: 100px;
+  margin-left: 26%;
+}
